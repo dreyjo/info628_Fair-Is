@@ -1,0 +1,85 @@
+---
+#' title: "Data Cleaning_Fair Is Iteration 3"
+#' author: "Drey Jonathan"
+#' date:"December 2, 2021" 
+#' output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+#' # Data Cleaning for Iteration 3 of Fair Is:
+
+In this notebook I document cleaning my Primary Dataset for iteration 3 of the Fair Is project. For more information on the previous iterations of this project you can see my Data Managemant Plan and Methodologies Statement. To see how the Primary Dataset was created see Data Creation for Iteration 3 of Fair Is.
+
+I conducted the following cleaning steps and described my reasoning below:
+- **Removing stopwords**
+- **Removing punctuation**
+- **Making all abstracts lowercase**
+- **Removing numbers**  
+- **Striping whitespace**
+
+#' ## Setting Up for Cleaning
+First load all needed libraries
+```{r}
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+library(tidytext)
+library(stringr)
+library(tm)
+```
+Then we load csv into variable so we can manipulate it
+```{r}
+primary <- read.csv('/Users/aster/Desktop/Fall 21/data_lib/final_project/info628_final-project_fair-is/data/processed_data/csv/primary_data.csv', skip=0, header=TRUE,)
+```
+#' ## Cleaning Steps
+I planned on applying each cleaning function to the primary dataset by callign the 'title' and 'abstract' column specifically so first I do a quick check to make sure I have the correct column names.
+```{r}
+names(primary)
+```
+#' ### Making text lowercase:
+primary[c('title', 'abstract')] <- sapply(primary[c('title', 'abstract')], function(x) tolower(x))
+head(primary,1)
+
+#' ### Removing Punctuation:
+primary[c('title', 'abstract')] <- sapply(primary[c('title', 'abstract')], function(x) removePunctuation(x))
+head(primary,1)
+
+#' ### Removing Stopworsd:
+primary[c('title', 'abstract')] <- sapply(primary[c('title', 'abstract')], function(x) removeWords(x, stopwords('en') ))
+head(primary,1)
+
+#' ### Removing numberse:
+primary[c('title', 'abstract')] <- sapply(primary[c('title', 'abstract')], function(x) removeNumbers(x))
+head(primary,1)
+
+#' ### Removing Whitespace:
+primary[c('title', 'abstract')] <- sapply(primary[c('title', 'abstract')], function(x) stripWhitespace(x))
+head(primary,1)
+
+#' ### Exporting Data:
+As a last step I export my cleaned dataset as a csv document
+write.csv(primary,'/Users/aster/Desktop/Fall 21/data_lib/final_project/info628_final-project_fair-is/data/processed_data/csv/cleaned_primary_data_12022021.csv', row.names=FALSE )
+
+Just to be sure, I reload my cleaned csv for a quick inspeection to make sure I have the dataset I need.
+
+qa = read.csv('/Users/aster/Desktop/Fall 21/data_lib/final_project/info628_final-project_fair-is/data/processed_data/csv/cleaned_primary_data_12022021.csv', skip=0, header=TRUE,)
+head(qa,1)
+
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r}
+
+```
+
