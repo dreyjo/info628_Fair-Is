@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Fair Is Digital Poster</title>
+<!--Linking Bootstrap-->
+<link href="bootstrap.min.css" rel="stylesheet">
+
+<!--Linking stylesheet-->
+<link href="style.css" rel="stylesheet">
+
+<!--Linking Google font-->
+<!--<link href="https://fonts.googleapis.com/css?family=Khula">-->
+
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khula">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="sticky-top">
+          <div class="pt-3">
+            <div>
+              <nav class="navbar-fluid">
+              <a href="index.html">
+                <h1 class="display-4" style="letter-spacing: 0em;">Fair Is:Defining "Fairness" in Machine Learning</h1>
+              </a>
+            </div>
+
+            <h3 class="display-7" style="letter-spacing: 0em;">Summary:</h3>
+            <p>In response to continually growing instances of algorithmic harms perpetrated through machine learning applications, “fairness” as an approach, set of standards practices has been offered as a potential remedy to “bias” in machine learning research. Building on the extensive conversation on definitions and limits to fairness as a way of approaching algorithmic harm and research conducted for INFO 656 Machine Learning and INFO 640 Data Analysis. Through topic modeling, specifically Latent Dirichlet Allocation I hoped to answer the question “ what do machine learning researchers mean by fairness?” by identifying different approaches or understandings of “fairness” in a collection of machine learning literature.  </p>
+
+            <h3 class="display-7" style="letter-spacing: 0em;">Methods:</h3>
+            <p>For this third iteration I returned to the datasets created in the first two iterations and combined them into a single dataset. I cleaned the dataset moving back and forth between the pandas python library and Rstudio. Preprocessing steps conducted included tokenization, forming bigrams, parts of speech tagging and lemmatization though I ultimately only analyzed unigram tokens. I used the Gensim python library to create a dictionary and document term matrix and then fit four LDA models. Finally I used the pyLDAvis python library to generate the visualization on this digital poster.</p>
+
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="pt-3">
+          <div class="h-divider"></div>
+          <h3><b>Title Topics where k=21</b></h3>
+           <iframe src="../data/data_products/vis/lda_titles_k21.html" height="1000" width="6000" title="Title Topics where k=21"></iframe>
+
+          <div class="h-divider"></div>
+          <h3><b>Title Topics where k=√n/2</b></h3>
+          <iframe src="../data/data_products/vis/lda_titles_k12.html" height="1000" width="6000" title="Title Topics where k=21"></iframe>
+
+         <div class="h-divider"></div>
+         <h3><b>Abstract Topics where k=21</b></h3>
+         <iframe src="../data/data_products/vis/lda_abstracts_k21.html" height="1000" width="6000" title="Title Topics where k=21"></iframe>
+
+        <div class="h-divider"></div>
+        <h3><b>Abstract Topics where k=√n/2</b></h3>
+        <iframe src="../data/data_products/vis/lda_abstracts_k12.html" height="1000" width="6000" title="Title Topics where k=21"></iframe>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>
